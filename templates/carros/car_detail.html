@@ -1,0 +1,23 @@
+{%extends 'base.html'%}
+{% load bootstrap5 %}
+{%block title%}{{car.brand}}{%endblock title%}
+{% block content %}
+<div class="container">
+    <br>
+    <h2>Detalhes do Carro</h2>
+    <p>Ano do carro: {{ car.year }}</p>
+    <p>Marca do Carro: {{ car.brand }}</p> 
+    <p>Modelo do Carro: {{ car.model }}</p> 
+    <p>Preço: {{car.price}} Reais</p>
+    <p>Status: {{ car.is_available }}</p>
+    {% if car.avatar %}
+      <img src="{{ car.avatar.url }}" alt="Carro" width="275" height="183">
+    {% else %}
+      <p>Foto não disponível</p>
+    {% endif %}
+    <br><br>
+    
+    <a class="btn btn-primary" href="{% url 'car_update' car.id %}">Atualizar Carro</a>
+    <a class="btn btn-danger" href="{% url 'car_delete' car.id %}">Apagar Carro</a>
+</div>
+{% endblock %}

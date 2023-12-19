@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{%block title%}{{reservation.user}}{%endblock title%}
+{% block content %}
+  <main>
+    <div class="container">
+      <h2>Detalhes da Reserva</h2>
+      <p>Carro: {{ reservation.car }}</p>
+      <p>Usuário: {{ reservation.user }}</p>
+      <p>Data de Início: {{ reservation.pickup_date }}</p>
+      <p>Data de Fim: {{ reservation.return_date }}</p>
+      <a class="btn btn-primary" href="{% url 'reservation_update' reservation.id %}">Atualizar Reserva</a>
+      <a class="btn btn-danger" href="{% url 'reservation_delete' reservation.id %}">Apagar Reserva</a>
+    </div>
+  </main>
+{% endblock %}

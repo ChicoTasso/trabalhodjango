@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+<script src="{% static 'js/mask.js' %}"></script>
+{% block title %}{{user.nickname}}{%endblock title%}
+{% block content %}
+
+
+<div class="container">
+    <br>
+    <h2>Detalhes do Usuário</h2>
+    <p>Usuário: {{ user.nickname }}</p>
+    <p>CPF: {{ user.cpf }}</p>
+    <p>N° de Telefone: {{ user.phone_number }}</p>
+    <p>Carro alugado : {{reservation.user.car}}</p>
+    <a class="btn btn-primary" href="{% url 'user_update' user.id %}">Atualizar usuário</a>
+    <a class="btn btn-danger" href="{% url 'user_delete' user.id %}">Apagar usuário</a>
+</div>
+
+{% endblock %}

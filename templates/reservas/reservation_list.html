@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{%block title%}Lista de Reservas{%endblock title%}
+{% block content %}
+  <main>
+    <div class="container">
+      <h2>Lista de Reservas</h2>
+      <ul>
+        {% for reservation in reservations %}
+          <li>
+            <a href="{% url 'reservation_detail' reservation.id %}">{{ reservation.car }} <span>alugado pelo </span>{{ reservation.user }} </a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </main>
+{% endblock %}

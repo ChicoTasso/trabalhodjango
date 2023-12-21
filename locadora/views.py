@@ -29,12 +29,11 @@ class CarDetailView(DetailView):
     template_name = 'carros/car_detail.html'
     context_object_name = 'car'
 
-class CarCreateView(LoginRequiredMixin,PermissionRequiredMixin,CreateView):
+class CarCreateView(LoginRequiredMixin,CreateView):
     model = Car
     form_class = CarForm
     template_name = 'carros/car_form.html'
     success_url = reverse_lazy('car_list')
-    permission_required = 'locadora.add_car'
     
 
 class CarUpdateView(LoginRequiredMixin,UpdateView):
@@ -42,13 +41,11 @@ class CarUpdateView(LoginRequiredMixin,UpdateView):
     form_class = CarForm
     template_name = 'carros/car_form.html'
     success_url = reverse_lazy('car_list')
-    permission_required = 'locadora.change_car'
 
 class CarDeleteView(LoginRequiredMixin,DeleteView):
     model = Car
     template_name = 'carros/car_confirm_delete.html'
     success_url = reverse_lazy('car_list')
-    permission_required = 'locadora.delete_car'
 
 class UserListView(ListView):
     model = get_user_model()
